@@ -1,0 +1,41 @@
+{% macro campo3(field) %}
+  <dt></dt>
+  <dd>
+    {% if field.type == 'RadioField' %}
+      {% for subfield in field %}
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          {{ subfield }} <span style="margin-left: 6px;">{{ subfield.label.text }}</span>
+        </div>
+      {% endfor %}
+    {% else %}
+      {{ field.label }} {{ field(**kwargs)|safe }}
+    {% endif %}
+    {% if field.errors %}
+      <ul class=errors>
+      {% for error in field.errors %}
+        <li style="color: rgb(255, 0, 0);">{{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  </dd>
+{% endmacro %}
+
+{% macro campo2(field) %}
+  <dt>{{ field.label }}
+  <dd>{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li style="color: red;">{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+
+{% macro campo1(name, placeholder, type='text') %}
+  <div class="mb-1">
+      <label for="{{name}}" class="form-label">N 1:</label>
+      <input type="{{type}}" class="form-control" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
+  </div>
+{% endmacro %}

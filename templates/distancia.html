@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
-    {%block content %}
+{% block content %}
+{% import "_macros.html" as macro %}
     <h1>Pagina de Distancia.</h1>
-    {% endblock %}
+        <form class="form-control" action="/" method="post">
+            {{macro.campo1('x1', 'Ingrese X1', 'number')}}
+            {{macro.campo1('y1', 'Ingrese Y1', 'number')}}
+            {{macro.campo1('x1', 'Ingrese X2', 'number')}}
+            {{macro.campo1('y1', 'Ingrese Y2', 'number')}}
+        </form>
+{% endblock %}
